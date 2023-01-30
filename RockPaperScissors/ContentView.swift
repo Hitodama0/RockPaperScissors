@@ -34,6 +34,7 @@ struct ContentView: View {
         VStack{
             VStack(spacing: 5) {
                 Text("Score: \(score)")
+                Text("round: \(rounds)/10")
                 Text("Computer move: \(moves[computerMove])")
                 Text(text)
             }
@@ -87,7 +88,7 @@ struct ContentView: View {
     }
     
     func round() {
-        if rounds <= 10 {
+        if rounds < 10 {
             game()
             computerMove = Int.random(in: 0...2)
             rounds += 1
@@ -98,9 +99,11 @@ struct ContentView: View {
     }
     
     func reset() {
-        score = 0
-        rounds = 0
         round()
+        playerMove = ""
+        text = ""
+        score = 0
+        rounds = 1
     }
 }
 
